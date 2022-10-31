@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#00897b">
+    <meta name="description" content="The Open Information Security Management System">
+    <title>OpenISMS GitHub Client</title>
+</head>
+<body>
+<h1>OpenISMS GitHub Client</h1>
+<p>This client connects to the GitHub API and provides OpenISMS-compatible information at <a href="/audit">/audit</a>.</p>
+
+{{- /*gotype: github.com/OpenISMS/GitHubClient.IndexPageData*/ -}}
+
+<h2>Status</h2>
+
+<ul>
+    <li>Token available: {{ .TokenAvailable }}</li>
+    <li>Orgs available:
+        <ul>
+            {{ range .OrgsAvailable }}
+                <li>{{.Name}} - {{.Description}} - <a href="{{.URL}}">{{.URL}}</a></li>
+            {{ end }}
+        </ul>
+    </li>
+    <li>Org selected: {{.OrgSelected}}</li>
+</ul>
+
+<pre>{{ .Octocat }}</pre>
+
+</body>
+</html>
