@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"embed"
 	"github.com/google/go-github/v47/github"
 	"html/template"
 	"log"
@@ -21,9 +22,13 @@ type GitHubOrg struct {
 	URL         string
 }
 
+//go:embed templates/*
+var templates embed.FS
+
 func getRoot(w http.ResponseWriter, r *http.Request) {
 
-	tmpl := template.Must(template.ParseGlob("templates/*"))
+	tmpl, _ := template.ParseFS(templates, "templates/*")
+
 	client := getClient()
 	ctx := context.Background()
 	octo, _, _ := client.Octocat(ctx, "OpenISMS")

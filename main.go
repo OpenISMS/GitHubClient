@@ -23,9 +23,6 @@ var ctx = context.Background()
 func main() {
 
 	_ = godotenv.Load()
-	//if envErr != nil {
-	//	log.Fatalf("Can't load env %v", envErr)
-	//}
 
 	token = os.Getenv("TOKEN")
 	org = os.Getenv("ORG")
