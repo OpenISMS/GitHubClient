@@ -11,3 +11,7 @@ ENTRYPOINT ["/bin/githubclient"]
 WORKDIR /workdir
 ENV LISTEN :2701
 EXPOSE 2701
+
+LABEL org.opencontainers.image.source=https://github.com/OpenISMS/GitHubClient
+LABEL org.opencontainers.image.vendor=OpenISMS
+LABEL org.opencontainers.image.title="GitHub Client for OpenISMS"

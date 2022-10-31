@@ -15,8 +15,6 @@ dockers:
   - image_templates:
       - "ghcr.io/{{ .ProjectName }}:{{ .Version }}-amd64"
       - "ghcr.io/{{ .ProjectName }}:latest-amd64"
-      - "{{ .ProjectName }}:{{ .Version }}"
-      - "{{ .ProjectName }}:latest"
     use: buildx
     goarch: amd64
     dockerfile: Dockerfile
