@@ -1,6 +1,6 @@
 # This is an example .goreleaser.yml file with some sensible defaults.
 # Make sure to check the documentation at https://goreleaser.com
-project_name: OpenISMS/GitHubClient
+project_name: openisms/githubclient
 before:
   hooks:
     - go mod tidy
@@ -13,22 +13,24 @@ builds:
       - darwin
 dockers:
   - image_templates:
-      - "ghcr.io/openisms/{{ .ProjectName }}:{{ .Version }}-amd64"
-      - "ghcr.io/openisms/{{ .ProjectName }}:latest-amd64"
+      - "ghcr.io/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/{{ .ProjectName }}:latest-amd64"
+      - "{{ .ProjectName }}:{{ .Version }}"
+      - "{{ .ProjectName }}:latest"
     use: buildx
     goarch: amd64
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/amd64"
 docker_manifests:
-  - name_template: ghcr.io/openisms/{{ .ProjectName }}:{{ .Version }}
+  - name_template: ghcr.io/{{ .ProjectName }}:{{ .Version }}
     image_templates:
-      - ghcr.io/openisms/{{ .ProjectName }}:{{ .Version }}-amd64
-      # - ghcr.io/openisms/{{ .ProjectName }}:{{ .Version }}-arm64v8
-  - name_template: ghcr.io/openisms/{{ .ProjectName }}:latest
+      - ghcr.io/{{ .ProjectName }}:{{ .Version }}-amd64
+      # - ghcr.io/{{ .ProjectName }}:{{ .Version }}-arm64v8
+  - name_template: ghcr.io/{{ .ProjectName }}:latest
     image_templates:
-      - ghcr.io/openisms/{{ .ProjectName }}:latest-amd64
-      # - ghcr.io/openisms/{{ .ProjectName }}:latest-arm64v8
+      - ghcr.io/{{ .ProjectName }}:latest-amd64
+      # - ghcr.io/{{ .ProjectName }}:latest-arm64v8
 archives:
   - replacements:
       darwin: Darwin

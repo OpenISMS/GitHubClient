@@ -23,7 +23,7 @@ type GitHubOrg struct {
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
 
-	tmpl := template.Must(template.ParseGlob("index.gohtml"))
+	tmpl := template.Must(template.ParseGlob("templates/*"))
 	client := getClient()
 	ctx := context.Background()
 	octo, _, _ := client.Octocat(ctx, "OpenISMS")
